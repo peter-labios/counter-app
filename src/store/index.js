@@ -1,22 +1,21 @@
 import {createStore} from 'redux';
 
 const reducerFunction = (state = {counter: 0}, action) => {
-    if(action.type==="INC"){
+    if(action.type==="INC" && parseInt(action.payload)){
         return {
-            counter: state.counter+1
+            counter: state.counter+action.payload
         }
     }
-    if(action.type==="DEC"){
+    if(action.type==="DEC" && parseInt(action.payload)){
         return {
-            counter: state.counter-1
+            counter: state.counter-action.payload
         }
     }
-    if(action.type==="ADD"){
+    if(action.type==="RESET") {
         return {
-            counter: state.counter + action.payload
+            counter: 0
         }
     }
-
     return state;
 }
 
